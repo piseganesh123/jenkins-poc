@@ -18,12 +18,12 @@ provider "google" {
 }
 
 # We create a public IP address for our google compute instance to utilize
-resource "google_compute_address" "static" {
+/* resource "google_compute_address" "static" {
   name = "vm-public-address"
   project = var.project_id
   region = var.region
 //  depends_on = [ google_compute_firewall.firewall ]
-}
+} */
 // A single Compute Engine instance
 resource "google_compute_instance" "gcp-instance" {
  // name         = "prografana-poc-vm-${random_id.instance_id.hex}"
@@ -49,7 +49,7 @@ resource "google_compute_instance" "gcp-instance" {
    network = "default"
 
    access_config {
-     nat_ip = google_compute_address.static.address
+     //nat_ip = google_compute_address.static.address
      }
   }
   metadata = {

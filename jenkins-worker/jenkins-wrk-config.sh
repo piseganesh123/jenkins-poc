@@ -32,10 +32,3 @@ echo \
 
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-
-echo " ======= Instal Jenkins ============"
-
-sudo docker pull jenkins/jenkins:2.303.1
-
-sudo docker run -p 80:8080 -p 50000:50000 -d -u root -v /home/piseg432/jenkins-home:/var/jenkins_home jenkins/jenkins:2.303.1
-

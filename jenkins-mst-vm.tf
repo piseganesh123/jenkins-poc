@@ -55,16 +55,9 @@ resource "google_compute_instance" "gcp-instance" {
   metadata = {
    ssh-keys = "piseg432:${file("~/.ssh/id_rsa.pub")}"
   }
-  /* provisioner "file" {
-        source = "/home/piseg432/.kube/config"
-        destination = "/home/piseg432/.config"
-        connection {
-            type = "ssh"
-            user = "piseg432"
-            private_key = file("~/.ssh/id_rsa")
-            host = google_compute_address.static.address
-        }
-    } */
+  scheduling = {
+    preemptible = "true"
+  }
 }
 
 output "instance_ip_addr" {

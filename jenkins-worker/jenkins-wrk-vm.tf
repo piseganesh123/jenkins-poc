@@ -28,7 +28,7 @@ provider "google" {
 resource "google_compute_instance" "gcp-instance" {
  // name         = "prografana-poc-vm-${random_id.instance_id.hex}"
  name = "jenkins-wrk-tf"
- machine_type = "e2-medium"
+ machine_type = "e2-small"
  zone         = "asia-south1-c"
  tags = ["allow-jenkins-8080-5000","http-server"]
   labels = {
@@ -55,16 +55,9 @@ resource "google_compute_instance" "gcp-instance" {
   metadata = {
    ssh-keys = "piseg432:${file("~/.ssh/id_rsa.pub")}"
   }
-  /* provisioner "file" {
-        source = "/home/piseg432/.kube/config"
-        destination = "/home/piseg432/.config"
-        connection {
-            type = "ssh"
-            user = "piseg432"
-            private_key = file("~/.ssh/id_rsa")
-            host = google_compute_address.static.address
-        }
-    } */
+  scheduling = {
+    preemptible = "true"
+  }
 }
 
 output "instance_ip_addr" {

@@ -57,6 +57,7 @@ resource "google_compute_instance" "gcp-instance" {
   }
   scheduling {
     preemptible = "true"
+    automatic_restart = "false"
   }
 }
 
@@ -96,6 +97,7 @@ resource "google_compute_instance" "jnk-wrk-instance" {
   }
   scheduling {
     preemptible = "true"
+    automatic_restart = "false"
   }
 }
 

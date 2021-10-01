@@ -55,7 +55,7 @@ resource "google_compute_instance" "gcp-instance" {
   metadata = {
    ssh-keys = "piseg432:${file("~/.ssh/id_rsa.pub")}"
   }
-  scheduling = {
+  scheduling {
     preemptible = "true"
   }
 }
@@ -94,7 +94,7 @@ resource "google_compute_instance" "jnk-wrk-instance" {
   metadata = {
    ssh-keys = "piseg432:${file("~/.ssh/id_rsa.pub")}"
   }
-  scheduling = {
+  scheduling {
     preemptible = "true"
   }
 }

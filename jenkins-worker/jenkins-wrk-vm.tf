@@ -25,42 +25,4 @@ provider "google" {
 //  depends_on = [ google_compute_firewall.firewall ]
 } */
 // A single Compute Engine instance
-resource "google_compute_instance" "gcp-instance" {
- // name         = "prografana-poc-vm-${random_id.instance_id.hex}"
- name = "jenkins-wrk-tf"
- machine_type = "e2-small"
- zone         = "asia-south1-c"
- tags = ["allow-jenkins-8080-5000","http-server"]
-  labels = {
-    "purpose" = "poc"
-    "preserve" = "no"
-  }
-  boot_disk {
-    initialize_params {
-      image = "ubuntu-1804-bionic-v20210720"
-    }
-  }
-
-// 
-// metadata_startup_script = "sudo apt-get update; sudo apt-get install -yq build-essential python-pip rsync"
-  metadata_startup_script = file("jenkins-wrk-config.sh")
-
- network_interface {
-   network = "default"
-
-   access_config {
-     //nat_ip = google_compute_address.static.address
-     }
-  }
-  metadata = {
-   ssh-keys = "piseg432:${file("~/.ssh/id_rsa.pub")}"
-  }
-  scheduling = {
-    preemptible = "true"
-  }
-}
-
-output "instance_ip_addr" {
-  value = "${google_compute_instance.gcp-instance.hostname}"
-}
 

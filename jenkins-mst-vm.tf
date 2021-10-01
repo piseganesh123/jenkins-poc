@@ -60,7 +60,7 @@ resource "google_compute_instance" "gcp-instance" {
   }
 }
 
-output "instance_ip_addr" {
+output "mst-instance_ip_addr" {
   value = "${google_compute_instance.gcp-instance.hostname}"
 }
 
@@ -99,6 +99,6 @@ resource "google_compute_instance" "jnk-wrk-instance" {
   }
 }
 
-output "instance_ip_addr" {
+output "wrk-instance_ip_addr" {
   value = "${google_compute_instance.jnk-wrk-instance.hostname}"
 }

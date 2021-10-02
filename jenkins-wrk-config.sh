@@ -36,3 +36,9 @@ sudo apt-get install -y docker-ce docker-ce-cli containerd.io
 #install Java & maven
 apt-get install -y openjdk-11-jre-headless 
   maven
+  
+#Install Ansible
+sudo add-apt-repository --yes --update ppa:ansible/ansible
+sudo apt install ansible -y
+
+touch /etc/ansible/hosts

@@ -7,3 +7,5 @@ ssh-keygen -t rsa -m PEM -f /root/sshrsakey/.ssh/id_rsa
 
 install agent on Node using 
 $wget http://35.200.213.6/jnlpJars/agent.jar
+
+install jdk on agent

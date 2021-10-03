@@ -1,4 +1,3 @@
-
 #! /bin/bash
 
 
@@ -41,3 +40,4 @@ sudo add-apt-repository --yes --update ppa:ansible/ansible
 sudo apt install ansible -y
 
 touch /etc/ansible/hosts
+chmod o+rw /etc/ansible/hosts

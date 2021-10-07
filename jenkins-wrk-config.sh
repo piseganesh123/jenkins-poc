@@ -41,3 +41,8 @@ sudo apt install ansible -y
 
 touch /etc/ansible/hosts
 chmod o+rw /etc/ansible/hosts
+
+#download jenkins agent liabrary
+wget http://34.93.89.27/jnlpJars/agent.jar
+
+mv ./agent.jar /home/piseg432/ && chown piseg432 /home/piseg432/agent.jar
